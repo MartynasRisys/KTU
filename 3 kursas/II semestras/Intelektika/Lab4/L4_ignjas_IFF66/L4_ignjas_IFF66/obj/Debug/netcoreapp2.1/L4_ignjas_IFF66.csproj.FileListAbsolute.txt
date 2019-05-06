@@ -1,0 +1,11 @@
+E:\L4_ignjas_IFF66\L4_ignjas_IFF66\bin\Debug\netcoreapp2.1\L4_ignjas_IFF66.deps.json
+E:\L4_ignjas_IFF66\L4_ignjas_IFF66\bin\Debug\netcoreapp2.1\L4_ignjas_IFF66.runtimeconfig.json
+E:\L4_ignjas_IFF66\L4_ignjas_IFF66\bin\Debug\netcoreapp2.1\L4_ignjas_IFF66.runtimeconfig.dev.json
+E:\L4_ignjas_IFF66\L4_ignjas_IFF66\bin\Debug\netcoreapp2.1\L4_ignjas_IFF66.dll
+E:\L4_ignjas_IFF66\L4_ignjas_IFF66\bin\Debug\netcoreapp2.1\L4_ignjas_IFF66.pdb
+E:\L4_ignjas_IFF66\L4_ignjas_IFF66\obj\Debug\netcoreapp2.1\L4_ignjas_IFF66.csprojAssemblyReference.cache
+E:\L4_ignjas_IFF66\L4_ignjas_IFF66\obj\Debug\netcoreapp2.1\L4_ignjas_IFF66.csproj.CoreCompileInputs.cache
+E:\L4_ignjas_IFF66\L4_ignjas_IFF66\obj\Debug\netcoreapp2.1\L4_ignjas_IFF66.AssemblyInfoInputs.cache
+E:\L4_ignjas_IFF66\L4_ignjas_IFF66\obj\Debug\netcoreapp2.1\L4_ignjas_IFF66.AssemblyInfo.cs
+E:\L4_ignjas_IFF66\L4_ignjas_IFF66\obj\Debug\netcoreapp2.1\L4_ignjas_IFF66.dll
+E:\L4_ignjas_IFF66\L4_ignjas_IFF66\obj\Debug\netcoreapp2.1\L4_ignjas_IFF66.pdb
