@@ -20,7 +20,7 @@ f = map read
 getMedian :: [Int] -> Int -> Float
 getMedian list len = do
     if (len `mod` 2 == 0)
-        then divideIntToFloat (list!!(len `div` 2 - 1) + list!!(len `div` 2)) 2
+        then divideIntToFloat (list!!(len `div` 2 - 1) + list!!(div len `div` 2)) 2
     else divideIntToFloat (list!!((len - 1) `div` 2)) 1
 
 divideIntToFloat :: Int -> Int -> Float
