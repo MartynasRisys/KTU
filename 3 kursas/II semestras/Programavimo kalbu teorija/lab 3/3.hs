@@ -1,6 +1,7 @@
 import System.IO
 import Control.Monad
 import Data.Function
+import Data.List
 
 main = do
         let list = []
@@ -8,7 +9,6 @@ main = do
         contents <- hGetContents handle
         let singlewords = words contents
             list = f singlewords
-        print list
         writeFile "output.txt" ""
         iterateAllList list 1
         hClose handle
@@ -26,11 +26,15 @@ getMedian list len = do
 divideIntToFloat :: Int -> Int -> Float
 divideIntToFloat a b = (fromIntegral a) / (fromIntegral b)
 
+slice from to xs = take (to - from + 1) (drop from xs)
+
 iterateAllList list currentIteration = do
     let lengthList = length list
     if (currentIteration <= lengthList)
         then do
-            let median = getMedian list currentIteration
+            let listNew = slice 0 (currentIteration - 1) list
+            let sortedNewList = sort listNew
+            let median = getMedian sortedNewList currentIteration
             let roundedMedian = floor median
             appendFile "output.txt" (show roundedMedian)
             appendFile "output.txt" ("\n")
