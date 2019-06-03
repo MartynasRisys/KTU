@@ -1,9 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
 import seaborn as sns
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
 import itertools
 
@@ -18,10 +16,6 @@ def plot_confusion_matrix(cm, classes,
                           normalize=False,
                           title='Confusion matrix',
                           cmap=plt.cm.Blues):
-    """
-    This function prints and plots the confusion matrix.
-    Normalization can be applied by setting `normalize=True`.
-    """
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     plt.title(title)
     plt.colorbar()
@@ -48,18 +42,28 @@ train = pd.read_csv("./input/data.csv")
 answers = train["label"]
 data = train.drop(labels=["label"], axis=1)
 
+figureCount = 0
+
 # rodyti duomenu variacijas
 # sns.countplot(answers)
-# plt.show()
+# plt.figure(figureCount)
+# figureCount += 1
 
 print(f"Ar yra sugadintu duomenu? {data.isnull().values.any()}")
 
 # normalizuojam skaitines reiksmes
 data = data / 255.0
 
+
+
 # paverciam vektoriu skaitines reiksmes i 28x28 matricas
 data = data.values.reshape(-1, 28, 28, 1)
-print(data)
+
+# rodyti pavyzdini treniravimos paveiksliuka
+# plt.imshow(data[3][:, :, 0])
+# plt.title("Pavyzdiniai duomenys")
+# plt.figure(figureCount)
+# figureCount += 1
 
 # nustatom iseiciu kieki (10)
 answers = to_categorical(answers, num_classes=10)
@@ -110,13 +114,13 @@ datagen = ImageDataGenerator(
         samplewise_std_normalization=False,  # divide each input by its std
         zca_whitening=False,  # apply ZCA whitening
         rotation_range=10,  # randomly rotate images in the range (degrees, 0 to 180)
-        zoom_range = 0.1, # Randomly zoom image
+        zoom_range=0.1,  # Randomly zoom image
         width_shift_range=0.1,  # randomly shift images horizontally (fraction of total width)
         height_shift_range=0.1,  # randomly shift images vertically (fraction of total height)
         horizontal_flip=False,  # randomly flip images
         vertical_flip=False)  # randomly flip images
 
-iterations = 2
+iterations = 1
 # Kryzmine patikra po 10% duomenu testavimui, likusieji 90% - mokymuisi
 for i in range(iterations):
     kryz_train_data = np.delete(data, np.s_[int(i * total_pictures / iterations):int((i + 1) * total_pictures / iterations)], 0)
@@ -140,51 +144,7 @@ for i in range(iterations):
     confusion_mtx = confusion_matrix(Y_true, Y_pred_classes)
     # plot the confusion matrix
     plot_confusion_matrix(confusion_mtx, classes=range(10))
-    plt.figure(i)
+    plt.figure(figureCount)
+    figureCount += 1
 
-# rodyti pavyzdini treniravimos paveiksliuka
-# plt.imshow(data[5][:, :, 0])
-# plt.show()
-
-# # Display some error results
-#
-# # Errors are difference between predicted labels and true labels
-# errors = (Y_pred_classes - Y_true != 0)
-#
-# Y_pred_classes_errors = Y_pred_classes[errors]
-# Y_pred_errors = Y_pred[errors]
-# Y_true_errors = Y_true[errors]
-# X_val_errors = X_val[errors]
-#
-# def display_errors(errors_index,img_errors,pred_errors, obs_errors):
-#     """ This function shows 6 images with their predicted and real labels"""
-#     n = 0
-#     nrows = 2
-#     ncols = 3
-#     fig, ax = plt.subplots(nrows, ncols, sharex=True, sharey=True)
-#     for row in range(nrows):
-#         for col in range(ncols):
-#             error = errors_index[n]
-#             ax[row,col].imshow((img_errors[error]).reshape((28,28)))
-#             ax[row,col].set_title("Predicted label :{}\nTrue label :{}".format(pred_errors[error],obs_errors[error]))
-#             n += 1
-#
-# # Probabilities of the wrong predicted numbers
-# Y_pred_errors_prob = np.max(Y_pred_errors, axis = 1)
-#
-# # Predicted probabilities of the true values in the error set
-# true_prob_errors = np.diagonal(np.take(Y_pred_errors, Y_true_errors, axis=1))
-#
-# # Difference between the probability of the predicted label and the true label
-# delta_pred_true_errors = Y_pred_errors_prob - true_prob_errors
-#
-# # Sorted list of the delta prob errors
-# sorted_dela_errors = np.argsort(delta_pred_true_errors)
-#
-# # Top 6 errors
-# most_important_errors = sorted_dela_errors[-6:]
-#
-# # Show the top 6 errors
-# display_errors(most_important_errors, X_val_errors, Y_pred_classes_errors, Y_true_errors)
-# plt.figure(2)
 plt.show()
