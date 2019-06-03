@@ -1,0 +1,22 @@
+CNN
+be pca:
+784 inputai
+95% accuracy
+su pca:
+-------
+
+KNN
+be pca:
+784 inputai
+95% accuracy
+su pca:
+400 inputu
+89% accuracy
+
+K-Means
+be pca:
+784 inputai
+81% accuracy
+su pca:
+400 inputu
+86% accuracy
