@@ -1,0 +1,8 @@
+jest.mock('./images/0.jpg')
+jest.mock('./images/1.jpg')
+jest.mock('./images/2.jpg')
+jest.mock('./images/3.jpg')
+jest.mock('./images/4.jpg')
+jest.mock('./images/5.jpg')
+jest.mock('./images/6.jpg')
+jest.mock('./index.css')
